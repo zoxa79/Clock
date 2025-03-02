@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  display: inline-block;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  font-family: "Arial";
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.clock {
+  background-color: rgb(30, 56, 56);
+  width: 150px;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  color: white;
+  display: grid;
+  place-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.clock-circle {
+  width: 8px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 50%;
+  background-color: rgb(0, 0, 0);
+  display: grid;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.clock-bar-seconds {
+  width: 2px;
+  height: 55px;
+  position: absolute;
+  top: 10%;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  left: 74px;
+  transform: translate(-50%);
+  transform: rotate(1turn);
+  transform-origin: bottom;
+  transition: transform 60s;
+  animation: rotateSeconds 60s linear infinite;
+}
+
+.clock-bar-minutes {
+  width: 2px;
+  height: 45px;
+  position: absolute;
+  top: 18%;
+  background-color: rgb(234, 0, 0);
+  display: grid;
+  left: 74px;
+  transform: translate(-50%);
+  transform: rotate(1turn);
+  transform-origin: bottom;
+  transition: transform 3600s;
+  animation: rotateMinutes 3600s steps(60, end) infinite;
+}
+
+.clock-bar-hours {
+  width: 2px;
+  height: 30px;
+  position: absolute;
+  top: 28%;
+  background-color: rgb(0, 0, 0);
+  display: grid;
+  left: 74px;
+  transform: translate(-50%);
+  transform: rotate(1turn);
+  transform-origin: bottom;
+  transition: transform calc(60 * 60 * 60s);
+  animation: rotateHours calc(60 * 60 * 60s) steps(12, end) infinite;
+}
+
+@keyframes rotateSeconds {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateMinutes {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateHours {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
